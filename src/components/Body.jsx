@@ -26,7 +26,7 @@ const Body = () => {
 
         return (
             <div className="w-5/6 h-20 flex mt-1 mb-1">
-                <textarea defaultValue={note.text} onChange={useCallback((e) => setValue(e.target.value))} className="w-11/12 h-full rounded-md drop-shadow-lg border-2 border-double">
+                <textarea defaultValue={note.text} onChange={useCallback((e) => setValue(e.target.value))} className="w-11/12 h-full rounded-md drop-shadow-lg border-2 border-double border-black">
                 </textarea>
                 <div className="flex flex-col ml-1">
                     <button onClick={()=>{axios.put(`${import.meta.env.VITE_API_URL}/notes/${note._id}`, {

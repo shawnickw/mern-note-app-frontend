@@ -22,7 +22,7 @@ export const NewNoteItem = () => {
 
     return (
         <div className="flex w-5/6 mt-2 ">
-            <textarea className="w-11/12 h-20 rounded-md drop-shadow-lg border-2 border-double" 
+            <textarea className="w-11/12 h-20 rounded-md drop-shadow-lg border-2 border-black" 
                 name = "noteTextArea"
                 type="text"
                 id="NoteText"
