@@ -30,7 +30,8 @@ export const NewNoteItem = () => {
                 onChange={e => setNoteText(e.target.value)}>
             </textarea>
             <div>
-                <button onClick= {() => {handleSubmit()}} className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
+                <button onClick= {() => {handleSubmit()}} 
+                className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
                 bg-black text-white rounded-md ml-1 h-full w-full shrink-0 font-bold">
                     Create
                 </button>

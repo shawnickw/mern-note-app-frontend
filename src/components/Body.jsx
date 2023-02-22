@@ -36,7 +36,8 @@ const Body = () => {
                     bg-black text-white rounded-md w-full h-1/2 shrink-0 font-bold">
                         Update
                     </button>
-                    <button onClick={()=>{deleteMutation.mutate(note._id)}} className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
+                    <button onClick={()=>{deleteMutation.mutate(note._id)}} 
+                    className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
                     bg-black text-white rounded-md mt-1 w-full h-1/2 shrink-0 font-bold">
                         Delete
                     </button>
