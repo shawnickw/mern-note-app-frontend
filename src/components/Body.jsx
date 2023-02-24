@@ -1,4 +1,4 @@
-import readNotesRequest from "../api/readNotesRequest";
+import readNotesRequest from "./readNotesRequest";
 import { useQuery, useQueryClient} from "react-query";
 import BarLoader from 'react-spinners/BarLoader';
 import { NewNoteItem } from "./NewNoteItem";
