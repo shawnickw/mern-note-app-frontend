@@ -28,7 +28,7 @@ export const NewNoteItem = () => {
                 name = "noteTextArea"
                 type="text"
                 id="NoteText"
-                value = {noteText}
+                value = {newText}
                 onChange={e => dispatch(setNewText(e.target.value))}>
             </textarea>
             <div>
