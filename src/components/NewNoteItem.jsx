@@ -1,10 +1,12 @@
 import { useMutation } from 'react-query';
 import axios from 'axios';
 import { useQueryClient } from 'react-query';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewText } from '../redux/newTextSlice';
 
 export const NewNoteItem = () => {
-    const [noteText,setNoteText] = useState("")
+    const newText = useSelector((state) => state.newText.value)
+    const dispatch = useDispatch();
     const queryClient = useQueryClient();
 
     const mutation = useMutation(newNote => {
@@ -17,7 +19,7 @@ export const NewNoteItem = () => {
     })
 
     const handleSubmit = (evt) => {
-        mutation.mutate({ text: noteText})
+        mutation.mutate({ text: newText})
     }
 
     return (
@@ -27,7 +29,7 @@ export const NewNoteItem = () => {
                 type="text"
                 id="NoteText"
                 value = {noteText}
-                onChange={e => setNoteText(e.target.value)}>
+                onChange={e => dispatch(setNewText(e.target.value))}>
             </textarea>
             <div>
                 <button onClick= {() => {handleSubmit()}} 

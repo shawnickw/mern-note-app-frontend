@@ -5,9 +5,13 @@ import { NewNoteItem } from "./NewNoteItem";
 import { useMutation } from "react-query";
 import axios from "axios";
 import React, { useCallback } from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUpdateText } from "../redux/updateTextSlice";
 
 const Body = () => {
+    const updateText = useSelector((state) => state.updateText.value)
+    const dispatch = useDispatch()
+
     const {isLoading, data: notes} = useQuery('notes', readNotesRequest); // Replaces useEffect and useState
 
     const NoteItems = ({ note }) => {
@@ -22,16 +26,14 @@ const Body = () => {
             } 
         })
 
-        const [value, setValue] = useState();
-
         return (
             <div className="w-5/6 h-20 flex mt-1 mb-1">
-                <textarea defaultValue={note.text} onChange={useCallback((e) => setValue(e.target.value))} 
+                <textarea defaultValue={note.text} onChange={useCallback((e) => dispatch(setUpdateText(e.target.value)))} 
                 className="w-11/12 h-full rounded-md drop-shadow-lg border-4 border-solid border-black">
                 </textarea>
                 <div className="flex flex-col ml-1">
                     <button onClick={()=>{axios.put(`${import.meta.env.VITE_API_URL}/notes/${note._id}`, {
-                    text: `${value}`
+                    text: `${updateText}`
                     })}} className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
                     bg-black text-white rounded-md w-full h-1/2 shrink-0 font-bold">
                         Update
