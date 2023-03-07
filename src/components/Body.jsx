@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUpdateText } from "../redux/updateTextSlice";
 
 const Body = () => {
-    const updateText = useSelector((state) => state.updateText.value)
     const dispatch = useDispatch()
 
     const {isLoading, data: notes} = useQuery('notes', readNotesRequest); // Replaces useEffect and useState
 
     const NoteItems = ({ note }) => {
+        const updateText = useSelector((state) => state.updateText.value)
         const queryClient = useQueryClient();
 
         const deleteMutation = useMutation(noteid => {
@@ -28,7 +28,7 @@ const Body = () => {
 
         return (
             <div className="w-5/6 h-20 flex mt-1 mb-1">
-                <textarea defaultValue={note.text} onChange={useCallback((e) => dispatch(setUpdateText(e.target.value)))} 
+                <textarea defaultValue={note.text} onChange={((e) => dispatch(setUpdateText(e.target.value)))} 
                 className="w-11/12 h-full rounded-md drop-shadow-lg border-4 border-solid border-black">
                 </textarea>
                 <div className="flex flex-col ml-1">
