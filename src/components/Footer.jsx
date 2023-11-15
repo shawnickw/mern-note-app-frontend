@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
-        <footer className="text-center font-bold text-sm">
-            MADE FOR EFFICIENCY
+        <footer className="md:text-center text-stone-200 font-bold text-sm md:text-lg ml-2 md:ml-0">
+            © 2023
         </footer>
     )
 }

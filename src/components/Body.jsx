@@ -26,22 +26,27 @@ const Body = () => {
             } 
         })
 
+        const textareaStyle = {
+            fontSize: "32px",
+        }
+
         return (
-            <div className="w-5/6 h-20 flex mt-1 mb-1">
+            <div className="w-full h-40 flex mt-1 mb-5 bg-stone-800 rounded-md
+            transition transform hover:-translate-y-1 active:translate-y-0.5">
                 <textarea defaultValue={note.text} onChange={((e) => dispatch(setUpdateText(e.target.value)))} 
-                className="w-11/12 h-full rounded-md drop-shadow-lg border-4 border-solid border-black">
+                className="md:w-11/12 w-9/12 h-40 rounded-md drop-shadow-lg border-8 border-solid font-bold 
+                border-stone-800 bg-stone-800 text-stone-200"
+                style={textareaStyle}>
                 </textarea>
-                <div className="flex flex-col ml-1">
+                <div className="flex flex-col md:w-1/12 w-3/12">
                     <button onClick={()=>{axios.put(`${import.meta.env.VITE_API_URL}/notes/${note._id}`, {
                     text: `${updateText}`
-                    })}} className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
-                    bg-black text-white rounded-md w-full h-1/2 shrink-0 font-bold">
-                        Update
+                    })}} className="md:text-5xl text-4xl text-white w-full h-1/2 shrink-0 font-bold rounded-md">
+                        📝
                     </button>
                     <button onClick={()=>{deleteMutation.mutate(note._id)}} 
-                    className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
-                    bg-black text-white rounded-md mt-1 w-full h-1/2 shrink-0 font-bold">
-                        Delete
+                    className="md:text-5xl text-4xl text-white w-full h-1/2 shrink-0 font-bold rounded-md">
+                        🗑
                     </button>
                 </div>
             </div>
@@ -49,13 +54,13 @@ const Body = () => {
     } // passes into .map method 
 
     return (
-        <main className="flex h-full justify-center items-center">
-            <div className="h-4/5 w-4/5 rounded flex flex-col items-center p-5 overflow-y-scroll">
+        <main className="flex h-full justify-center overflow-auto w-full">
+            <div className="md:w-4/5 w-screen rounded flex flex-col md:items-center p-10 md:mr-0">
+                {<NewNoteItem />}
                 {isLoading ? ( <BarLoader size={100} /> ) : (
                 notes.map((note) => (
                     <NoteItems note={note} key={note._id} />
                 )))} 
-                {<NewNoteItem />}
             </div>
         </main>
     )

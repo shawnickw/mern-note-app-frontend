@@ -21,21 +21,27 @@ export const NewNoteItem = () => {
     const handleSubmit = (evt) => {
         mutation.mutate({ text: newText})
     }
+    
+    const textareaStyle = {
+        fontSize: "32px",
+    }
 
     return (
-        <div className="flex w-5/6 mt-2 ">
-            <textarea className="w-11/12 h-20 rounded-md drop-shadow-lg border-4 border-black" 
+        <div className="flex w-full bg-stone-800 rounded-md mb-5 
+        transition transform hover:-translate-y-1 active:translate-y-0.5">
+            <textarea className="md:w-11/12 w-9/12 h-40 rounded-md drop-shadow-lg border-8 font-bold 
+            border-stone-800 bg-stone-800 text-stone-200" 
                 name = "noteTextArea"
+                style={textareaStyle}
                 type="text"
                 id="NoteText"
                 value = {newText}
                 onChange={e => dispatch(setNewText(e.target.value))}>
             </textarea>
-            <div>
+            <div className="md:w-1/12 w-3/12 text-center">
                 <button onClick= {() => {handleSubmit()}} 
-                className="transition transform hover:-translate-y-0.5 active:translate-y-0.5
-                bg-black text-white rounded-md ml-1 h-full w-full shrink-0 font-bold">
-                    Create
+                className="text-white md:text-5xl text-4xl rounded-md h-full w-full shrink-0 font-bold">
+                    📝
                 </button>
             </div>
         </div>
